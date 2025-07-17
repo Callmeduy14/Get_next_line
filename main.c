@@ -1,61 +1,37 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: Your Name <your.email@student.42.fr>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 00:00:00 by Your Name         #+#    #+#             */
-/*   Updated: 2024/01/01 00:00:00 by Your Name        ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-#include "get_next_line.h"
-#include <stdio.h>  // For printf function
+// Pilih salah satu: GET_NEXT_LINE_BONUS untuk versi bonus
+#ifdef GET_NEXT_LINE_BONUS
+# include "get_next_line_bonus.h"
+#else
+# include "get_next_line.h"
+#endif
 
-/**
- * Main function to test get_next_line
- * Demonstrates how to use the get_next_line function
- */
-int	main(void)
+int main(int argc, char **argv)
 {
-	int		fd;         // File descriptor for the test file
-	char	*line;      // Will store each line read
-	int		line_count; // Counter for line numbers
+    int fd;
+    char *line;
+    int line_num = 1;
 
-	// Open the test file for reading
-	// O_RDONLY means read-only mode
-	fd = open("test.txt", O_RDONLY);
-	
-	// Check if file opened successfully
-	if (fd == -1)
-	{
-		printf("Error: Could not open test.txt\n");
-		return (1);
-	}
-
-	printf("=== Testing get_next_line function ===\n\n");
-	
-	line_count = 1;
-	
-	// Read lines from file one by one
-	// get_next_line returns NULL when it reaches end of file
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		// Print line number and the line content
-		printf("Line %d: %s", line_count, line);
-		line_count++;
-		
-		// Free the memory allocated for the line
-		// This is important to prevent memory leaks
-		free(line);
-	}
-
-	// Close the file descriptor
-	close(fd);
-	
-	printf("\n=== End of file reached ===\n");
-	printf("Total lines read: %d\n", line_count - 1);
-	
-	return (0);
+    if (argc != 2)
+    {
+        printf("Usage: %s <filename>\n", argv[0]);
+        return 1;
+    }
+    fd = open(argv[1], O_RDONLY);
+    if (fd < 0)
+    {
+        perror("open");
+        return 1;
+    }
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%3d: %s", line_num++, line);
+        free(line);
+    }
+    close(fd);
+    return 0;
 } 
