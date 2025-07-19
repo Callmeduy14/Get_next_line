@@ -1,98 +1,117 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/19 20:22:05 by yyudi             #+#    #+#             */
+/*   Updated: 2025/07/19 21:39:59 by yyudi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
-// Utility functions remain the same as in mandatory part
-size_t	ft_strlen(const char *s)
+size_t ft_strlen(const char *s)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+    size_t i = 0;
+    while (s && s[i])
+        i++;
+    return i;
 }
 
-char	*ft_strchr(const char *s, int c)
+char *ft_strchr(const char *s, int c)
 {
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if ((char)c == '\0')
-		return ((char *)s);
-	return (NULL);
+    if (!s)
+        return NULL;
+    while (*s)
+    {
+        if (*s == (char)c)
+            return (char *)s;
+        s++;
+    }
+    return NULL;
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strdup(const char *s1)
 {
-	char	*result;
-	size_t	i;
-	size_t	j;
+    char    *dup;
+    size_t  len;
+    size_t  i;
 
-	if (!s1 || !s2)
-		return (NULL);
-	result = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		result[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-	{
-		result[i + j] = s2[j];
-		j++;
-	}
-	result[i + j] = '\0';
-	return (result);
+    if (!s1)
+        return NULL;
+    len = ft_strlen(s1);
+    dup = malloc(len + 1);
+    if (!dup)
+        return NULL;
+    i = 0;
+    while (i < len)
+    {
+        dup[i] = s1[i];
+        i++;
+    }
+    dup[i] = '\0';
+    return dup;
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	char	*substr;
-	size_t	i;
-	size_t	s_len;
+    char    *result;
+    size_t  i;
+    size_t  j;
+    size_t  len1;
+    size_t  len2;
 
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	substr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!substr)
-		return (NULL);
-	i = 0;
-	while (i < len && s[start + i])
-	{
-		substr[i] = s[start + i];
-		i++;
-	}
-	substr[i] = '\0';
-	return (substr);
+    if (!s1 && !s2)
+        return NULL;
+    if (!s1)
+        return ft_strdup(s2);
+    if (!s2)
+        return ft_strdup(s1);
+    len1 = ft_strlen(s1);
+    len2 = ft_strlen(s2);
+    result = malloc(len1 + len2 + 1);
+    if (!result)
+        return NULL;
+    i = 0;
+    while (i < len1)
+    {
+        result[i] = s1[i];
+        i++;
+    }
+    j = 0;
+    while (j < len2)
+    {
+        result[i + j] = s2[j];
+        j++;
+    }
+    result[i + j] = '\0';
+    return result;
 }
 
-char	*ft_strdup(const char *s1)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*dup;
-	size_t	i;
-	size_t	len;
+    char    *sub;
+    size_t  i;
+    size_t  s_len;
 
-	len = ft_strlen(s1);
-	dup = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		dup[i] = s1[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+    if (!s)
+        return NULL;
+    s_len = ft_strlen(s);
+    if (start >= s_len)
+        return ft_strdup("");
+    if (len > s_len - start)
+        len = s_len - start;
+    sub = malloc(len + 1);
+    if (!sub)
+        return NULL;
+    i = 0;
+    while (i < len && s[start + i])
+    {
+        sub[i] = s[start + i];
+        i++;
+    }
+    sub[i] = '\0';
+    return sub;
 }
