@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 17:17:52 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/19 20:16:25 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/20 13:05:26 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ char	*ft_strchr(const char *s, int c)
 */
 char	*ft_strjoin(char *s1, const char *s2)
 {
-	char	*result;
+	char	*res;
 	size_t	i;
-	size_t	j;
 
 	if (!s1 && !s2)
 		return (NULL);
@@ -60,35 +59,27 @@ char	*ft_strjoin(char *s1, const char *s2)
 		return (ft_strdup(s2));
 	if (!s2)
 	{
-		result = ft_strdup(s1);
+		res = ft_strdup(s1);
 		free(s1);
-		return (result);
+		return (res);
 	}
-
-	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!result)
+	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!res)
 	{
 		free(s1);
 		return (NULL);
 	}
-
 	i = 0;
 	while (s1[i])
 	{
-		result[i] = s1[i];
+		res[i] = s1[i];
 		i++;
 	}
-
-	j = 0;
-	while (s2[j])
-	{
-		result[i + j] = s2[j];
-		j++;
-	}
-
-	result[i + j] = '\0';
+	while (*s2)
+		res[i++] = *s2++;
+	res[i] = '\0';
 	free(s1);
-	return (result);
+	return (res);
 }
 
 /*
@@ -102,17 +93,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-
 	s_len = ft_strlen(s);
 	if (start >= s_len)
 		return (ft_strdup(""));
 	if (len > s_len - start)
 		len = s_len - start;
-
 	substr = malloc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (NULL);
-
 	i = 0;
 	while (i < len && s[start + i])
 	{
@@ -134,12 +122,10 @@ char	*ft_strdup(const char *s1)
 
 	if (!s1)
 		return (NULL);
-
 	len = ft_strlen(s1);
 	dup = malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (NULL);
-
 	i = 0;
 	while (s1[i])
 	{

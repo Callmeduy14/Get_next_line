@@ -6,131 +6,115 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 17:07:17 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/19 20:15:47 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/20 13:02:05 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/* Deklarasi fungsi helper terlebih dahulu */
-static char	*read_to_stash(int fd, char *stash);
-static char	*extract_line(char *stash);
-static char	*clean_stash(char *stash);
-
-/*
-** Fungsi utama get_next_line
-*/
-char	*get_next_line(int fd)
+/* New unified free function */
+static void	*gnl_free(char **ptr)
 {
-	static char	*stash = NULL;
-	char		*line;
-
-	// Pengecekan error
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
-		return (NULL);
-
-	// Baca dari fd dan simpan ke stash
-	stash = read_to_stash(fd, stash);
-	if (!stash)
-		return (NULL);
-
-	// Ambil satu baris dari stash
-	line = extract_line(stash);
-
-	// Update stash dengan sisa string
-	stash = clean_stash(stash);
-
-	return (line);
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+	return (NULL);
 }
 
-/*
-** Fungsi untuk membaca dari fd dan menambahkan ke stash
-*/
-static char	*read_to_stash(int fd, char *stash)
+char	*ft_get_line(int fd, char *line)
 {
 	char	*buffer;
-	ssize_t	bytes_read;
+	ssize_t	read_bytes;
 
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
+		return (gnl_free(&line));
+	read_bytes = 1;
+	while (!ft_strchr(line, '\n') && read_bytes > 0)
 	{
-		free(stash);
-		return (NULL);
-	}
-
-	bytes_read = 1;
-	while (!ft_strchr(stash, '\n') && bytes_read != 0)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (read_bytes == -1)
 		{
-			free(buffer);
-			free(stash);
+			gnl_free(&buffer);
+			return (gnl_free(&line));
+		}
+		buffer[read_bytes] = '\0';
+		line = ft_strjoin(line, buffer);
+		if (!line)
+		{
+			gnl_free(&buffer);
 			return (NULL);
 		}
-		buffer[bytes_read] = '\0';
-		stash = ft_strjoin(stash, buffer);
-		if (!stash)
-			break;
 	}
-	free(buffer);
-	return (stash);
-}
-
-/*
-** Fungsi untuk mengambil satu baris dari stash
-*/
-static char	*extract_line(char *stash)
-{
-	size_t	i;
-	char	*line;
-
-	i = 0;
-	if (!stash || !stash[i])
-		return (NULL);
-
-	while (stash[i] && stash[i] != '\n')
-		i++;
-
-	if (stash[i] == '\n')
-		i++;
-
-	line = ft_substr(stash, 0, i);
+	gnl_free(&buffer);
 	return (line);
 }
 
-/*
-** Fungsi untuk membersihkan stash setelah ekstrak baris
-*/
-static char	*clean_stash(char *stash)
+char	*new_line(char *line)
 {
-	size_t	i;
-	size_t	j;
-	char	*new_stash;
+	int		i;
+	int		j;
+	char	*str;
 
 	i = 0;
-	while (stash[i] && stash[i] != '\n')
+	if (!line)
+		return (NULL);
+	while (line[i] && line[i] != '\n')
 		i++;
-
-	if (!stash[i])
-	{
-		free(stash);
-		return (NULL);
-	}
-
-	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
-	if (!new_stash)
-	{
-		free(stash);
-		return (NULL);
-	}
-
+	if (!line[i])
+		return (gnl_free(&line));
+	str = (char *)malloc(ft_strlen(line) - i + 1);
+	if (!str)
+		return (gnl_free(&line));
 	i++;
 	j = 0;
-	while (stash[i])
-		new_stash[j++] = stash[i++];
-	new_stash[j] = '\0';
+	while (line[i])
+		str[j++] = line[i++];
+	str[j] = '\0';
+	gnl_free(&line);
+	return (str);
+}
 
-	free(stash);
-	return (new_stash);
+char	*ft_get_next_line(char *line)
+{
+	int		i;
+	char	*str;
+
+	if (!line || !*line)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	str = malloc(i + 1 + (line[i] == '\n'));
+	if (!str)
+		return (NULL);
+	i = -1;
+	while (line[++i] && line[i] != '\n')
+		str[i] = line[i];
+	if (line[i] == '\n')
+		str[i++] = '\n';
+	str[i] = '\0';
+	return (str);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*line;
+	char		*next_line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = ft_get_line(fd, line);
+	if (!line)
+		return (NULL);
+	next_line = ft_get_next_line(line);
+	if (!next_line)
+	{
+		gnl_free(&line);
+		return (NULL);
+	}
+	line = new_line(line);
+	return (next_line);
 }

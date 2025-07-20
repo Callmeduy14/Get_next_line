@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 20:20:44 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/19 21:32:13 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/20 12:47:40 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@
 
 typedef struct s_fd_list
 {
-    int                 fd;
-    char                *stash;
-    struct s_fd_list    *next;
+	int					fd;
+	char				*stash;
+	struct s_fd_list	*next;
 } t_fd_list;
 
-char    *get_next_line(int fd);
+char	*get_next_line(int fd);
 
 // Utility functions
-size_t  ft_strlen(const char *s);
-char    *ft_strchr(const char *s, int c);
-char    *ft_strjoin(char const *s1, char const *s2);
-char    *ft_strdup(const char *s1);
-char    *ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
