@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 20:23:08 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/20 12:46:49 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/22 12:28:00 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 static t_fd_list	*get_fd_node(t_fd_list **head, int fd)
 {
-	t_fd_list	*current = *head;
+	t_fd_list	*current;
 	t_fd_list	*new_node;
 
-	while (current)
+	current = *head;
+	while (current != NULL)
 	{
 		if (current->fd == fd)
 			return (current);
 		current = current->next;
 	}
 	new_node = malloc(sizeof(t_fd_list));
-	if (!new_node)
-		return NULL;
+	if (new_node == NULL)
+		return (NULL);
 	new_node->fd = fd;
 	new_node->stash = NULL;
 	new_node->next = *head;
@@ -33,12 +34,14 @@ static t_fd_list	*get_fd_node(t_fd_list **head, int fd)
 	return (new_node);
 }
 
-static void clean_fd_node(t_fd_list **head, int fd)
+static void	clean_fd_node(t_fd_list **head, int fd)
 {
-	t_fd_list *current = *head;
-	t_fd_list *prev = NULL;
+	t_fd_list	*current;
+	t_fd_list	*prev;
 
-	while (current)
+	current = *head;
+	prev = NULL;
+	while (current != NULL)
 	{
 		if (current->fd == fd)
 		{
@@ -46,11 +49,10 @@ static void clean_fd_node(t_fd_list **head, int fd)
 				prev->next = current->next;
 			else
 				*head = current->next;
-			if (current->stash)
-				free(current->stash);
+			free(current->stash);
 			free(current);
-			return;
-        }
+			return ;
+		}
 		prev = current;
 		current = current->next;
 	}
@@ -60,46 +62,47 @@ static char	*extract_line(char **stash)
 {
 	char	*line;
 	char	*newline_pos;
+	char	*remainder;
 	size_t	line_len;
 
-	if (!*stash || !**stash)
-		return NULL;
+	if (*stash == NULL || **stash == '\0')
+		return (NULL);
 	newline_pos = ft_strchr(*stash, '\n');
-	if (!newline_pos)
+	if (newline_pos == NULL)
 	{
 		line = ft_strdup(*stash);
 		free(*stash);
 		*stash = NULL;
-		return line;
+		return (line);
 	}
 	line_len = newline_pos - *stash + 1;
 	line = ft_substr(*stash, 0, line_len);
-	if (!line)
-		return NULL;
-	char *remainder = ft_strdup(newline_pos + 1);
+	if (line == NULL)
+		return (NULL);
+	remainder = ft_strdup(newline_pos + 1);
 	free(*stash);
 	*stash = remainder;
-	return line;
+	return (line);
 }
 
 static int	read_to_stash(int fd, char **stash)
 {
 	char	buffer[BUFFER_SIZE + 1];
-	ssize_t bytes_read;
+	ssize_t	bytes_read;
 	char	*new_stash;
 
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	while (bytes_read > 0)
-    {
+	{
 		buffer[bytes_read] = '\0';
 		new_stash = ft_strjoin(*stash, buffer);
 		if (*stash)
 			free(*stash);
-		if (!new_stash)
-			return 0;
+		if (new_stash == NULL)
+			return (0);
 		*stash = new_stash;
 		if (ft_strchr(*stash, '\n'))
-			break;
+			break ;
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	if (bytes_read == -1 && *stash)
@@ -120,18 +123,18 @@ char	*get_next_line(int fd)
 	{
 		if (fd >= 0)
 			clean_fd_node(&head, fd);
-		return NULL;
-    }
+		return (NULL);
+	}
 	current = get_fd_node(&head, fd);
-	if (!current)
-		return NULL;
+	if (current == NULL)
+		return (NULL);
 	if (!read_to_stash(fd, &current->stash) && !current->stash)
 	{
 		clean_fd_node(&head, fd);
-		return NULL;
+		return (NULL);
 	}
 	line = extract_line(&current->stash);
-	if (!line || !current->stash)
+	if (line == NULL || current->stash == NULL)
 		clean_fd_node(&head, fd);
-	return line;
+	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 20:20:44 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/20 12:47:40 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/23 13:15:15 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ typedef struct s_fd_list
 	int					fd;
 	char				*stash;
 	struct s_fd_list	*next;
-} t_fd_list;
+}	t_fd_list;
 
 char	*get_next_line(int fd);
 
-// Utility functions
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);

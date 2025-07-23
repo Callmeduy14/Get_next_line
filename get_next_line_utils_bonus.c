@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 20:22:05 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/20 12:56:19 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/23 13:22:01 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,39 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	i = 0;
+	size_t	i;
+
+	i = 0;
 	while (s && s[i])
 		i++;
-	return i;
+	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
 	if (!s)
-		return NULL;
+		return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c)
-			return (char *)s;
+			return ((char *)s);
 		s++;
 	}
-	return NULL;
+	return (NULL);
 }
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*dup;
 	size_t	len;
 	size_t	i;
 
 	if (!s1)
-		return NULL;
+		return (NULL);
 	len = ft_strlen(s1);
 	dup = malloc(len + 1);
 	if (!dup)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
@@ -52,10 +54,10 @@ char *ft_strdup(const char *s1)
 		i++;
 	}
 	dup[i] = '\0';
-	return dup;
+	return (dup);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
 	size_t	i;
@@ -63,49 +65,43 @@ char *ft_strjoin(char const *s1, char const *s2)
 	size_t	len1;
 	size_t	len2;
 
-	if (!s1 && !s2)
-		return NULL;
-	if (!s1)
-		return ft_strdup(s2);
-	if (!s2)
-		return ft_strdup(s1);
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	if (s1 == NULL)
+		return (ft_strdup(s2));
+	if (s2 == NULL)
+		return (ft_strdup(s1));
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	result = malloc(len1 + len2 + 1);
-	if (!result)
-		return NULL;
-	i = 0;
-	while (i < len1)
-	{
+	if (result == NULL)
+		return (NULL);
+	i = -1;
+	while (++i < len1)
 		result[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (j < len2)
-	{
+	j = -1;
+	while (++j < len2)
 		result[i + j] = s2[j];
-		j++;
-	}
 	result[i + j] = '\0';
-	return result;
+	return (result);
 }
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
 	size_t	s_len;
 
 	if (!s)
-		return NULL;
+		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return ft_strdup("");
+		return (ft_strdup(""));
 	if (len > s_len - start)
 		len = s_len - start;
 	sub = malloc(len + 1);
 	if (!sub)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (i < len && s[start + i])
 	{
@@ -113,5 +109,5 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	sub[i] = '\0';
-	return sub;
+	return (sub);
 }

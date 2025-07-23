@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 17:17:52 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/20 13:05:26 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/22 13:27:37 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,33 +51,25 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_strjoin(char *s1, const char *s2)
 {
 	char	*res;
-	size_t	i;
+	size_t	i[2];
+	size_t	len[2];
 
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
 		return (ft_strdup(s2));
-	if (!s2)
-	{
-		res = ft_strdup(s1);
-		free(s1);
-		return (res);
-	}
-	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	len[0] = ft_strlen(s1);
+	len[1] = ft_strlen(s2);
+	res = malloc(sizeof(char) * (len[0] + len[1] + 1));
 	if (!res)
-	{
-		free(s1);
-		return (NULL);
-	}
-	i = 0;
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	while (*s2)
-		res[i++] = *s2++;
-	res[i] = '\0';
+		return (free(s1), NULL);
+	i[0] = -1;
+	while (++i[0] < len[0])
+		res[i[0]] = s1[i[0]];
+	i[1] = -1;
+	while (++i[1] < len[1])
+		res[i[0] + i[1]] = s2[i[1]];
+	res[i[0] + i[1]] = '\0';
 	free(s1);
 	return (res);
 }

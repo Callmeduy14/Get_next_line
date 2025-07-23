@@ -6,13 +6,12 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 17:07:17 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/20 13:02:05 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/07/22 13:32:25 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/* New unified free function */
 static void	*gnl_free(char **ptr)
 {
 	if (*ptr)
