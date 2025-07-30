@@ -5,36 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 20:20:44 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/23 13:15:15 by yyudi            ###   ########.fr       */
+/*   Created: 2025/07/25 19:55:32 by yyudi             #+#    #+#             */
+/*   Updated: 2025/07/29 21:25:56 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_fd_list
-{
-	int					fd;
-	char				*stash;
-	struct s_fd_list	*next;
-}	t_fd_list;
+# ifndef MAX_FD
+#  if defined(OPEN_MAX)
+#   define MAX_FD OPEN_MAX
+#  else
+#   define MAX_FD 1024
+#  endif
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <limits.h>
 
 char	*get_next_line(int fd);
-
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif

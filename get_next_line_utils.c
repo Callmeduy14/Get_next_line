@@ -5,35 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 17:17:52 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/22 13:27:37 by yyudi            ###   ########.fr       */
+/*   Created: 2025/07/25 19:55:19 by yyudi             #+#    #+#             */
+/*   Updated: 2025/07/26 14:32:07 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
-** Fungsi untuk menghitung panjang string
-*/
 size_t	ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }
 
-/*
-** Fungsi untuk mencari karakter dalam string
-*/
 char	*ft_strchr(const char *s, int c)
 {
-	if (!s)
-		return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c)
@@ -45,42 +35,9 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-/*
-** Fungsi untuk menggabungkan dua string
-*/
-char	*ft_strjoin(char *s1, const char *s2)
-{
-	char	*res;
-	size_t	i[2];
-	size_t	len[2];
-
-	if (!s1 && !s2)
-		return (NULL);
-	if (!s1)
-		return (ft_strdup(s2));
-	len[0] = ft_strlen(s1);
-	len[1] = ft_strlen(s2);
-	res = malloc(sizeof(char) * (len[0] + len[1] + 1));
-	if (!res)
-		return (free(s1), NULL);
-	i[0] = -1;
-	while (++i[0] < len[0])
-		res[i[0]] = s1[i[0]];
-	i[1] = -1;
-	while (++i[1] < len[1])
-		res[i[0] + i[1]] = s2[i[1]];
-	res[i[0] + i[1]] = '\0';
-	free(s1);
-	return (res);
-}
-
-/*
-** Fungsi untuk mengambil substring
-*/
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	size_t	i;
 	size_t	s_len;
 
 	if (!s)
@@ -90,40 +47,50 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > s_len - start)
 		len = s_len - start;
-	substr = malloc(sizeof(char) * (len + 1));
+	substr = (char *)malloc(len + 1);
 	if (!substr)
 		return (NULL);
-	i = 0;
-	while (i < len && s[start + i])
-	{
-		substr[i] = s[start + i];
-		i++;
-	}
-	substr[i] = '\0';
+	ft_memcpy(substr, s + start, len);
+	substr[len] = '\0';
 	return (substr);
 }
 
-/*
-** Fungsi untuk menduplikasi string
-*/
-char	*ft_strdup(const char *s1)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*dup;
+	char	*str;
 	size_t	i;
-	size_t	len;
+	size_t	j;
 
-	if (!s1)
-		return (NULL);
-	len = ft_strlen(s1);
-	dup = malloc(sizeof(char) * (len + 1));
-	if (!dup)
+	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str)
 		return (NULL);
 	i = 0;
 	while (s1[i])
 	{
-		dup[i] = s1[i];
+		str[i] = s1[i];
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	j = 0;
+	while (s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*dest;
+	size_t	i;
+
+	dest = (char *)malloc(ft_strlen(s1) + 1);
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (i < ft_strlen(s1))
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
