@@ -5,159 +5,114 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 19:54:13 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/30 10:47:40 by yyudi            ###   ########.fr       */
+/*   Created: 2025/09/25 09:08:59 by yyudi             #+#    #+#             */
+/*   Updated: 2025/09/25 09:47:21 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*append_file_data(int fd, char *saved_buffer)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
-	size_t				i;
+	char	*read_buffer;
+	char	*joined_content;
+	int		bytes_read;
 
-	if (!dest && !src)
+	if (!saved_buffer)
+		saved_buffer = ft_strdup("");
+	read_buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!read_buffer)
+		return (free(saved_buffer), NULL);
+	bytes_read = 1;
+	while (!ft_strchr(saved_buffer, '\n') && bytes_read > 0)
+	{
+		bytes_read = read(fd, read_buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+			return (free(read_buffer), free(saved_buffer), NULL);
+		read_buffer[bytes_read] = '\0';
+		joined_content = ft_strjoin(saved_buffer, read_buffer);
+		free(saved_buffer);
+		saved_buffer = joined_content;
+	}
+	free(read_buffer);
+	return (saved_buffer);
+}
+
+char	*extract_current_line(char *saved_buffer)
+{
+	size_t	index;
+
+	if (!saved_buffer || !*saved_buffer)
 		return (NULL);
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
+	index = 0;
+	while (saved_buffer[index] && saved_buffer[index] != '\n')
+		index++;
+	if (saved_buffer[index] == '\n')
+		return (ft_substr(saved_buffer, 0, index + 1));
+	return (ft_strdup(saved_buffer));
 }
 
-static char	*ft_read(int fd, char *buffer, char *line, int *b_read)
+char	*remove_returned_line(char *saved_buffer)
 {
-	char	*temp;
+	size_t	index;
+	char	*remaining_content;
 
-	*b_read = 1;
-	while (!ft_strchr(buffer, '\n') && *b_read > 0)
-	{
-		*b_read = read(fd, buffer, BUFFER_SIZE);
-		if (*b_read == -1)
-			return (free(line), NULL);
-		if (*b_read > 0)
-		{
-			buffer[*b_read] = '\0';
-			temp = ft_strjoin(line, buffer);
-			if (!temp)
-				return (free(line), NULL);
-			free(line);
-			line = temp;
-		}
-	}
-	return (line);
-}
-
-static char	*extract_line(char *line)
-{
-	size_t	i;
-
-	if (!line)
+	if (!saved_buffer)
 		return (NULL);
-	i = 0;
-	while (line[i] && line[i] != '\n')
-		i++;
-	if (line[i] == '\n')
-		return (ft_substr(line, 0, i + 1));
-	return (ft_strdup(line));
-}
-
-static void	buffer_clean(char *buffer)
-{
-	size_t	i;
-	size_t	new_start;
-
-	i = 0;
-	new_start = 0;
-	while (buffer[new_start] && buffer[new_start] != '\n')
-		new_start++;
-	if (buffer[new_start] == '\n')
-	{
-		new_start++;
-		while (buffer[new_start + i])
-		{
-			buffer[i] = buffer[new_start + i];
-			i++;
-		}
-	}
-	buffer[i] = '\0';
+	index = 0;
+	while (saved_buffer[index] && saved_buffer[index] != '\n')
+		index++;
+	if (!saved_buffer[index])
+		return (free(saved_buffer), NULL);
+	remaining_content = ft_substr(saved_buffer,
+			index + 1, ft_strlen(saved_buffer) - index - 1);
+	free(saved_buffer);
+	return (remaining_content);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[MAX_FD][BUFFER_SIZE + 1];
-	int			b_read;
-	char		*line;
-	char		*temp;
+	static char	*saved_buffers[MAX_FD];
+	char		*next_line;
 
 	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (read(fd, buffer[fd], 0) == -1)
+	saved_buffers[fd] = append_file_data(fd, saved_buffers[fd]);
+	if (!saved_buffers[fd])
+		return (NULL);
+	next_line = extract_current_line(saved_buffers[fd]);
+	saved_buffers[fd] = remove_returned_line(saved_buffers[fd]);
+	if (!next_line || !*next_line)
 	{
-		buffer[fd][0] = '\0';
+		free(next_line);
 		return (NULL);
 	}
-	line = ft_strdup(buffer[fd]);
-	if (!line)
-		return (NULL);
-	line = ft_read(fd, buffer[fd], line, &b_read);
-	if (!line || (b_read == 0 && *line == '\0'))
-	{
-		free(line);
-		return (NULL);
-	}
-	temp = extract_line(line);
-	buffer_clean(buffer[fd]);
-	free(line);
-	return (temp);
+	return (next_line);
 }
 
-// #include <fcntl.h>
 // #include <stdio.h>
-
-// int main(void)
+// #include <fcntl.h>
+// int	main(int argc, char **argv)
 // {
-//     int fd1 = open("file1.txt", O_RDONLY);
-//     int fd2 = open("file2.txt", O_RDONLY);
-//     char *line1;
-//     char *line2;
+// 	int		fd;
+// 	char	*line;
 
-//     if (fd1 < 0 || fd2 < 0)
-//     {
-//         perror("File open error");
-//         return (1);
-//     }
-
-//     printf("Reading from file1.txt and file2.txt alternately:\n\n");
-
-//     while (1)
-//     {
-//         line1 = get_next_line(fd1);
-//         line2 = get_next_line(fd2);
-
-//         if (!line1 && !line2)
-//             break;
-
-//         if (line1)
-//         {
-//             printf("[file1] %s", line1);
-//             free(line1);
-//         }
-
-//         if (line2)
-//         {
-//             printf("[file2] %s", line2);
-//             free(line2);
-//         }
-//     }
-
-//     close(fd1);
-//     close(fd2);
-//     return (0);
+// 	if (BUFFER_SIZE <= 0)
+// 		return (0);
+// 	fd = 0;
+// 	if (argc > 1)
+// 		fd = open(argv[1], O_RDONLY);
+// 	if (fd < 0)
+// 		return (1);
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd);
+// 		if (!line)
+// 			break ;
+// 		write(1, line, ft_strlen(line));
+// 		free(line);
+// 	}
+// 	if (fd > 2)
+// 		close(fd);
+// 	return (0);
 // }

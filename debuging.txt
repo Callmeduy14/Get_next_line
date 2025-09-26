@@ -1,0 +1,802 @@
+Error in test 4: get_next_line(5: "empty.txt"):
+malloc protection check for 1th malloc:
+     in _add_malloc malloc_mock.c:29:8
+     in malloc malloc_mock.c:75:10
+  -> in ft_strdup get_next_line_utils.c:91:7
+     in append_file_data get_next_line.c:22:16
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:116:7
+     in main tester.c:111:2
+: Segmentation fault!
+     in sigsegv utils.c:53:1
+     in append_file_data get_next_line.c:27:10
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:138:8
+     in main tester.c:111:2
+
+Error in test 4: get_next_line(5: "1char.txt"):
+malloc protection check for 1th malloc:
+     in _add_malloc malloc_mock.c:29:8
+     in malloc malloc_mock.c:75:10
+  -> in ft_strdup get_next_line_utils.c:91:7
+     in append_file_data get_next_line.c:22:16
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:116:7
+     in main tester.c:117:2
+: Segmentation fault!
+     in sigsegv utils.c:53:1
+     in append_file_data get_next_line.c:27:10
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:138:8
+     in main tester.c:117:2
+
+Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
+malloc protection check for 1th malloc:
+     in _add_malloc malloc_mock.c:29:8
+     in malloc malloc_mock.c:75:10
+  -> in ft_strdup get_next_line_utils.c:91:7
+     in append_file_data get_next_line.c:22:16
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:116:7
+     in main tester.c:123:2
+: Segmentation fault!
+     in sigsegv utils.c:53:1
+     in append_file_data get_next_line.c:27:10
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:138:8
+     in main tester.c:123:2
+
+Error in test 4: get_next_line(5: "only_nl.txt"):
+malloc protection check for 1th malloc:
+     in _add_malloc malloc_mock.c:29:8
+     in malloc malloc_mock.c:75:10
+  -> in ft_strdup get_next_line_utils.c:91:7
+     in append_file_data get_next_line.c:22:16
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:116:7
+     in main tester.c:129:2
+: Segmentation fault!
+     in sigsegv utils.c:53:1
+     in append_file_data get_next_line.c:27:10
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:138:8
+     in main tester.c:129:2
+
+Error in test 8: get_next_line(5: "multiple_nl.txt"):
+malloc protection check for 1th malloc:
+     in _add_malloc malloc_mock.c:29:8
+     in malloc malloc_mock.c:75:10
+  -> in ft_strdup get_next_line_utils.c:91:7
+     in append_file_data get_next_line.c:22:16
+     in get_next_line get_next_line.c:80:15
+     in null_check_gnl file_utils.c:116:7
+     in main tester.c:135:2
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
+1   test1.out                           0x000000010525e441 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test1.out                           0x0000000105261fa5 append_file_data + 117
+5   test1.out                           0x0000000105262518 get_next_line + 56
+6   test1.out                           0x0000000105261e1e null_check_gnl + 542
+7   test1.out                           0x0000000105259327 main + 9287
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test1.out
+Error in test 15: get_next_line(5: "variable_nls.txt"):
+malloc protection check for 1th malloc:
+0   test1.out                           0x000000010525bb75 _add_malloc + 757
+1   test1.out                           0x000000010525b873 malloc + 307
+2   test1.out                           0x0000000105262a23 ft_strdup + 35
+3   test1.out                           0x0000000105261f56 append_file_data + 38
+4   test1.out                           0x0000000105262518 get_next_line + 56
+5   test1.out                           0x0000000105261c32 null_check_gnl + 50
+6   test1.out                           0x0000000105259c59 main + 11641
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
+1   test1.out                           0x000000010525e441 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test1.out                           0x0000000105261fa5 append_file_data + 117
+5   test1.out                           0x0000000105262518 get_next_line + 56
+6   test1.out                           0x0000000105261e1e null_check_gnl + 542
+7   test1.out                           0x0000000105259c59 main + 11641
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test1.out
+Error in test 8: get_next_line(5: "lines_around_10.txt"):
+malloc protection check for 1th malloc:
+0   test1.out                           0x000000010525bb75 _add_malloc + 757
+1   test1.out                           0x000000010525b873 malloc + 307
+2   test1.out                           0x0000000105262a23 ft_strdup + 35
+3   test1.out                           0x0000000105261f56 append_file_data + 38
+4   test1.out                           0x0000000105262518 get_next_line + 56
+5   test1.out                           0x0000000105261c32 null_check_gnl + 50
+6   test1.out                           0x000000010525a37e main + 13470
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
+1   test1.out                           0x000000010525e441 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test1.out                           0x0000000105261fa5 append_file_data + 117
+5   test1.out                           0x0000000105262518 get_next_line + 56
+6   test1.out                           0x0000000105261e1e null_check_gnl + 542
+7   test1.out                           0x000000010525a37e main + 13470
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test1.out
+Error in test 10: get_next_line(5: "read_error.txt"):
+malloc protection check for 1th malloc:
+0   test1.out                           0x000000010525bb75 _add_malloc + 757
+1   test1.out                           0x000000010525b873 malloc + 307
+2   test1.out                           0x0000000105262a23 ft_strdup + 35
+3   test1.out                           0x0000000105261f56 append_file_data + 38
+4   test1.out                           0x0000000105262518 get_next_line + 56
+5   test1.out                           0x0000000105261c32 null_check_gnl + 50
+6   test1.out                           0x000000010525ac1f main + 15679
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
+1   test1.out                           0x000000010525e441 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test1.out                           0x0000000105261fa5 append_file_data + 117
+5   test1.out                           0x0000000105262518 get_next_line + 56
+6   test1.out                           0x0000000105261e1e null_check_gnl + 542
+7   test1.out                           0x000000010525ac1f main + 15679
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test1.out
+##==##==##&&##==##==##./test1.out
+##==##==##&&##==##==##./test2.out
+##==##==##&&##==##==##./test2.out
+Error in test 4: get_next_line(5: "empty.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbeb4c7 main + 3175
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbeb4c7 main + 3175
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 4: get_next_line(5: "1char.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbebac0 main + 4704
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbebac0 main + 4704
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbec0b9 main + 6233
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbec0b9 main + 6233
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 4: get_next_line(5: "only_nl.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbec6b2 main + 7762
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbec6b2 main + 7762
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 8: get_next_line(5: "multiple_nl.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbecdd7 main + 9591
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbecdd7 main + 9591
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 15: get_next_line(5: "variable_nls.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbed709 main + 11945
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbed709 main + 11945
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 8: get_next_line(5: "lines_around_10.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbede2e main + 13774
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbede2e main + 13774
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 4: get_next_line(5: "giant_line.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbee47c main + 15388
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbee47c main + 15388
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 5: get_next_line(5: "giant_line_nl.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbeebf7 main + 17303
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbeebf7 main + 17303
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 10: get_next_line(5: "read_error.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbef507 main + 19623
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbef507 main + 19623
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+Error in test 4: get_next_line(5: "limits.txt"):
+malloc protection check for 1th malloc:
+0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
+1   test2.out                           0x000000010fbf06c3 malloc + 307
+2   test2.out                           0x000000010fbf7883 ft_strdup + 35
+3   test2.out                           0x000000010fbf6db6 append_file_data + 38
+4   test2.out                           0x000000010fbf7378 get_next_line + 56
+5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
+6   test2.out                           0x000000010fbea6ea test_limit + 602
+7   test2.out                           0x000000010fbefac2 main + 21090
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
+1   test2.out                           0x000000010fbf3291 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test2.out                           0x000000010fbf6e05 append_file_data + 117
+5   test2.out                           0x000000010fbf7378 get_next_line + 56
+6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
+7   test2.out                           0x000000010fbea6ea test_limit + 602
+8   test2.out                           0x000000010fbefac2 main + 21090
+9   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test2.out
+##==##==##&&##==##==##./test2.out
+##==##==##&&##==##==##./test3.out
+##==##==##&&##==##==##./test3.out
+Error in test 4: get_next_line(5: "empty.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x000000010476dad3 main + 3155
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x000000010476dad3 main + 3155
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 4: get_next_line(5: "1char.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x000000010476e0cc main + 4684
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x000000010476e0cc main + 4684
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x000000010476e6c5 main + 6213
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x000000010476e6c5 main + 6213
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 4: get_next_line(5: "only_nl.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x000000010476ecbe main + 7742
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x000000010476ecbe main + 7742
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 8: get_next_line(5: "multiple_nl.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x000000010476f3e3 main + 9571
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x000000010476f3e3 main + 9571
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 15: get_next_line(5: "variable_nls.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x000000010476fd15 main + 11925
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x000000010476fd15 main + 11925
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 8: get_next_line(5: "lines_around_10.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x000000010477043a main + 13754
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x000000010477043a main + 13754
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 4: get_next_line(5: "giant_line.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x0000000104770a88 main + 15368
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x0000000104770a88 main + 15368
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 5: get_next_line(5: "giant_line_nl.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x0000000104771203 main + 17283
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x0000000104771203 main + 17283
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+Error in test 10: get_next_line(5: "read_error.txt"):
+malloc protection check for 1th malloc:
+0   test3.out                           0x0000000104772a25 _add_malloc + 757
+1   test3.out                           0x0000000104772723 malloc + 307
+2   test3.out                           0x00000001047798e3 ft_strdup + 35
+3   test3.out                           0x0000000104778e16 append_file_data + 38
+4   test3.out                           0x00000001047793d8 get_next_line + 56
+5   test3.out                           0x0000000104778af2 null_check_gnl + 50
+6   test3.out                           0x0000000104771aff main + 19583
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test3.out                           0x0000000104775253 show_signal_msg + 419
+1   test3.out                           0x00000001047752f1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test3.out                           0x0000000104778e65 append_file_data + 117
+5   test3.out                           0x00000001047793d8 get_next_line + 56
+6   test3.out                           0x0000000104778cde null_check_gnl + 542
+7   test3.out                           0x0000000104771aff main + 19583
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test3.out
+##==##==##&&##==##==##./test3.out
+##==##==##&&##==##==##./test4.out
+##==##==##&&##==##==##./test4.out
+Error in test 4: get_next_line(5: "empty.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x0000000100404877 main + 2871
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x0000000100404877 main + 2871
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+Error in test 4: get_next_line(5: "1char.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x0000000100404e70 main + 4400
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x0000000100404e70 main + 4400
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x0000000100405469 main + 5929
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x0000000100405469 main + 5929
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+Error in test 4: get_next_line(5: "only_nl.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x0000000100405a62 main + 7458
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x0000000100405a62 main + 7458
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+Error in test 8: get_next_line(5: "multiple_nl.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x0000000100406187 main + 9287
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x0000000100406187 main + 9287
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+Error in test 15: get_next_line(5: "variable_nls.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x0000000100406ab9 main + 11641
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x0000000100406ab9 main + 11641
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+Error in test 8: get_next_line(5: "lines_around_10.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x00000001004071de main + 13470
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x00000001004071de main + 13470
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+Error in test 10: get_next_line(5: "read_error.txt"):
+malloc protection check for 1th malloc:
+0   test4.out                           0x00000001004089d5 _add_malloc + 757
+1   test4.out                           0x00000001004086d3 malloc + 307
+2   test4.out                           0x000000010040fa23 ft_strdup + 35
+3   test4.out                           0x000000010040edb6 append_file_data + 38
+4   test4.out                           0x000000010040f3c9 get_next_line + 137
+5   test4.out                           0x000000010040ea92 null_check_gnl + 50
+6   test4.out                           0x0000000100407a7f main + 15679
+7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+: Segmentation fault!
+0   test4.out                           0x000000010040b203 show_signal_msg + 419
+1   test4.out                           0x000000010040b2a1 sigsegv + 33
+2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
+3   ???                                 0x0000000000000000 0x0 + 0
+4   test4.out                           0x000000010040ee05 append_file_data + 117
+5   test4.out                           0x000000010040f3c9 get_next_line + 137
+6   test4.out                           0x000000010040ec7e null_check_gnl + 542
+7   test4.out                           0x0000000100407a7f main + 15679
+8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+
+##==##==##&&##==##==##./test4.out
+##==##==##&&##==##==##./test4.out

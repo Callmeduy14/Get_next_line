@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 19:55:32 by yyudi             #+#    #+#             */
-/*   Updated: 2025/07/29 21:25:56 by yyudi            ###   ########.fr       */
+/*   Created: 2025/09/25 09:10:46 by yyudi             #+#    #+#             */
+/*   Updated: 2025/09/26 14:07:28 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,14 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <limits.h>
 
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s1);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+size_t	ft_strlen(const char *str);
+char	*ft_strchr(const char *str, int search_char);
+char	*ft_strdup(const char *source_str);
+char	*ft_strjoin(const char *first, const char *second);
+char	*ft_substr(const char *source_str,
+			unsigned int start_index, size_t len);
 
 #endif
