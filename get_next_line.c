@@ -6,33 +6,52 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 09:07:50 by yyudi             #+#    #+#             */
-/*   Updated: 2025/09/25 09:46:59 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/09/26 19:20:51 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+static int	read_and_join(int fd, char **saved_buffer, char *read_buffer)
+{
+	int		bytes_read;
+	char	*joined_content;
+
+	bytes_read = read(fd, read_buffer, BUFFER_SIZE);
+	if (bytes_read == -1)
+		return (-1);
+	read_buffer[bytes_read] = '\0';
+	joined_content = ft_strjoin(*saved_buffer, read_buffer);
+	free(*saved_buffer);
+	if (!joined_content)
+		return (-2);
+	*saved_buffer = joined_content;
+	return (bytes_read);
+}
+
 char	*append_file_data(int fd, char *saved_buffer)
 {
 	char	*read_buffer;
-	char	*joined_content;
 	int		bytes_read;
 
 	if (!saved_buffer)
 		saved_buffer = ft_strdup("");
+	if (!saved_buffer)
+		return (NULL);
 	read_buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!read_buffer)
 		return (free(saved_buffer), NULL);
 	bytes_read = 1;
 	while (!ft_strchr(saved_buffer, '\n') && bytes_read > 0)
 	{
-		bytes_read = read(fd, read_buffer, BUFFER_SIZE);
+		bytes_read = read_and_join(fd, &saved_buffer, read_buffer);
 		if (bytes_read == -1)
 			return (free(read_buffer), free(saved_buffer), NULL);
-		read_buffer[bytes_read] = '\0';
-		joined_content = ft_strjoin(saved_buffer, read_buffer);
-		free(saved_buffer);
-		saved_buffer = joined_content;
+		if (bytes_read == -2)
+		{
+			free(read_buffer);
+			return (NULL);
+		}
 	}
 	free(read_buffer);
 	return (saved_buffer);
@@ -85,6 +104,11 @@ char	*get_next_line(int fd)
 	if (!next_line || !*next_line)
 	{
 		free(next_line);
+		if (saved_buffer)
+		{
+			free(saved_buffer);
+			saved_buffer = NULL;
+		}
 		return (NULL);
 	}
 	return (next_line);

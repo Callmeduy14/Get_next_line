@@ -1,802 +1,588 @@
-Error in test 4: get_next_line(5: "empty.txt"):
-malloc protection check for 1th malloc:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_strdup get_next_line_utils.c:91:7
-     in append_file_data get_next_line.c:22:16
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:116:7
-     in main tester.c:111:2
-: Segmentation fault!
-     in sigsegv utils.c:53:1
-     in append_file_data get_next_line.c:27:10
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:138:8
-     in main tester.c:111:2
+=================================================================
+==23017==ERROR: AddressSanitizer: attempting double-free on 0x602000000130 in thread T0:
+    #0 0x10a6362c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x107032065 in free malloc_mock.c:82
+    #2 0x107037f9b in append_file_data get_next_line.c:48
+    #3 0x107038577 in get_next_line get_next_line.c:91
+    #4 0x1070377d0 in test_gnl_func file_utils.c:40
+    #5 0x10702d5fa in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-Error in test 4: get_next_line(5: "1char.txt"):
-malloc protection check for 1th malloc:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_strdup get_next_line_utils.c:91:7
-     in append_file_data get_next_line.c:22:16
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:116:7
-     in main tester.c:117:2
-: Segmentation fault!
-     in sigsegv utils.c:53:1
-     in append_file_data get_next_line.c:27:10
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:138:8
-     in main tester.c:117:2
+0x602000000130 is located 0 bytes inside of 2-byte region [0x602000000130,0x602000000132)
+freed by thread T0 here:
+    #0 0x10a6362c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x107032065 in free malloc_mock.c:82
+    #2 0x107038037 in gnl_read_loop get_next_line.c:25
+    #3 0x107037f8e in append_file_data get_next_line.c:47
+    #4 0x107038577 in get_next_line get_next_line.c:91
+    #5 0x1070377d0 in test_gnl_func file_utils.c:40
+    #6 0x10702d5fa in main tester.c:103
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
-malloc protection check for 1th malloc:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_strdup get_next_line_utils.c:91:7
-     in append_file_data get_next_line.c:22:16
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:116:7
-     in main tester.c:123:2
-: Segmentation fault!
-     in sigsegv utils.c:53:1
-     in append_file_data get_next_line.c:27:10
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:138:8
-     in main tester.c:123:2
+previously allocated by thread T0 here:
+    #0 0x10a63617d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x107031a2c in malloc malloc_mock.c:65
+    #2 0x107037f52 in append_file_data get_next_line.c:44
+    #3 0x107038577 in get_next_line get_next_line.c:91
+    #4 0x1070377d0 in test_gnl_func file_utils.c:40
+    #5 0x10702d5fa in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-Error in test 4: get_next_line(5: "only_nl.txt"):
-malloc protection check for 1th malloc:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_strdup get_next_line_utils.c:91:7
-     in append_file_data get_next_line.c:22:16
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:116:7
-     in main tester.c:129:2
-: Segmentation fault!
-     in sigsegv utils.c:53:1
-     in append_file_data get_next_line.c:27:10
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:138:8
-     in main tester.c:129:2
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 2: get_next_line(100: "Invalid fd"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line.c:49:10
+     in get_next_line get_next_line.c:91:15
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:103:2
 
-Error in test 8: get_next_line(5: "multiple_nl.txt"):
-malloc protection check for 1th malloc:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_strdup get_next_line_utils.c:91:7
-     in append_file_data get_next_line.c:22:16
-     in get_next_line get_next_line.c:80:15
-     in null_check_gnl file_utils.c:116:7
-     in main tester.c:135:2
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
-1   test1.out                           0x000000010525e441 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test1.out                           0x0000000105261fa5 append_file_data + 117
-5   test1.out                           0x0000000105262518 get_next_line + 56
-6   test1.out                           0x0000000105261e1e null_check_gnl + 542
-7   test1.out                           0x0000000105259327 main + 9287
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23027==ERROR: AddressSanitizer: attempting double-free on 0x6020000004b0 in thread T0:
+    #0 0x10a6362c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x107032065 in free malloc_mock.c:82
+    #2 0x107037f9b in append_file_data get_next_line.c:48
+    #3 0x107038577 in get_next_line get_next_line.c:91
+    #4 0x1070377d0 in test_gnl_func file_utils.c:40
+    #5 0x107030c5b in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test1.out
-Error in test 15: get_next_line(5: "variable_nls.txt"):
-malloc protection check for 1th malloc:
-0   test1.out                           0x000000010525bb75 _add_malloc + 757
-1   test1.out                           0x000000010525b873 malloc + 307
-2   test1.out                           0x0000000105262a23 ft_strdup + 35
-3   test1.out                           0x0000000105261f56 append_file_data + 38
-4   test1.out                           0x0000000105262518 get_next_line + 56
-5   test1.out                           0x0000000105261c32 null_check_gnl + 50
-6   test1.out                           0x0000000105259c59 main + 11641
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
-1   test1.out                           0x000000010525e441 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test1.out                           0x0000000105261fa5 append_file_data + 117
-5   test1.out                           0x0000000105262518 get_next_line + 56
-6   test1.out                           0x0000000105261e1e null_check_gnl + 542
-7   test1.out                           0x0000000105259c59 main + 11641
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x6020000004b0 is located 0 bytes inside of 2-byte region [0x6020000004b0,0x6020000004b2)
+freed by thread T0 here:
+    #0 0x10a6362c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x107032065 in free malloc_mock.c:82
+    #2 0x107038037 in gnl_read_loop get_next_line.c:25
+    #3 0x107037f8e in append_file_data get_next_line.c:47
+    #4 0x107038577 in get_next_line get_next_line.c:91
+    #5 0x1070377d0 in test_gnl_func file_utils.c:40
+    #6 0x107030c5b in main tester.c:193
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test1.out
-Error in test 8: get_next_line(5: "lines_around_10.txt"):
-malloc protection check for 1th malloc:
-0   test1.out                           0x000000010525bb75 _add_malloc + 757
-1   test1.out                           0x000000010525b873 malloc + 307
-2   test1.out                           0x0000000105262a23 ft_strdup + 35
-3   test1.out                           0x0000000105261f56 append_file_data + 38
-4   test1.out                           0x0000000105262518 get_next_line + 56
-5   test1.out                           0x0000000105261c32 null_check_gnl + 50
-6   test1.out                           0x000000010525a37e main + 13470
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
-1   test1.out                           0x000000010525e441 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test1.out                           0x0000000105261fa5 append_file_data + 117
-5   test1.out                           0x0000000105262518 get_next_line + 56
-6   test1.out                           0x0000000105261e1e null_check_gnl + 542
-7   test1.out                           0x000000010525a37e main + 13470
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x10a63617d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x107031a2c in malloc malloc_mock.c:65
+    #2 0x107037f52 in append_file_data get_next_line.c:44
+    #3 0x107038577 in get_next_line get_next_line.c:91
+    #4 0x1070377d0 in test_gnl_func file_utils.c:40
+    #5 0x107030c5b in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test1.out
-Error in test 10: get_next_line(5: "read_error.txt"):
-malloc protection check for 1th malloc:
-0   test1.out                           0x000000010525bb75 _add_malloc + 757
-1   test1.out                           0x000000010525b873 malloc + 307
-2   test1.out                           0x0000000105262a23 ft_strdup + 35
-3   test1.out                           0x0000000105261f56 append_file_data + 38
-4   test1.out                           0x0000000105262518 get_next_line + 56
-5   test1.out                           0x0000000105261c32 null_check_gnl + 50
-6   test1.out                           0x000000010525ac1f main + 15679
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test1.out                           0x000000010525e3a3 show_signal_msg + 419
-1   test1.out                           0x000000010525e441 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test1.out                           0x0000000105261fa5 append_file_data + 117
-5   test1.out                           0x0000000105262518 get_next_line + 56
-6   test1.out                           0x0000000105261e1e null_check_gnl + 542
-7   test1.out                           0x000000010525ac1f main + 15679
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 3: get_next_line(5: "read_error.txt"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line.c:49:10
+     in get_next_line get_next_line.c:91:15
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:193:2
 
-##==##==##&&##==##==##./test1.out
-##==##==##&&##==##==##./test1.out
-##==##==##&&##==##==##./test2.out
-##==##==##&&##==##==##./test2.out
-Error in test 4: get_next_line(5: "empty.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbeb4c7 main + 3175
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbeb4c7 main + 3175
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23045==ERROR: AddressSanitizer: attempting double-free on 0x602000000130 in thread T0:
+    #0 0x111fc82c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10e9c4eb5 in free malloc_mock.c:82
+    #2 0x10e9cadfb in append_file_data get_next_line.c:48
+    #3 0x10e9cb3d7 in get_next_line get_next_line.c:91
+    #4 0x10e9ca630 in test_gnl_func file_utils.c:40
+    #5 0x10e9bf0aa in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 4: get_next_line(5: "1char.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbebac0 main + 4704
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbebac0 main + 4704
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x602000000130 is located 0 bytes inside of 11-byte region [0x602000000130,0x60200000013b)
+freed by thread T0 here:
+    #0 0x111fc82c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10e9c4eb5 in free malloc_mock.c:82
+    #2 0x10e9cae97 in gnl_read_loop get_next_line.c:25
+    #3 0x10e9cadee in append_file_data get_next_line.c:47
+    #4 0x10e9cb3d7 in get_next_line get_next_line.c:91
+    #5 0x10e9ca630 in test_gnl_func file_utils.c:40
+    #6 0x10e9bf0aa in main tester.c:103
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbec0b9 main + 6233
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbec0b9 main + 6233
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x111fc817d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10e9c487c in malloc malloc_mock.c:65
+    #2 0x10e9cadb2 in append_file_data get_next_line.c:44
+    #3 0x10e9cb3d7 in get_next_line get_next_line.c:91
+    #4 0x10e9ca630 in test_gnl_func file_utils.c:40
+    #5 0x10e9bf0aa in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 4: get_next_line(5: "only_nl.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbec6b2 main + 7762
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbec6b2 main + 7762
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 2: get_next_line(100: "Invalid fd"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line.c:49:10
+     in get_next_line get_next_line.c:91:15
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:103:2
 
-##==##==##&&##==##==##./test2.out
-Error in test 8: get_next_line(5: "multiple_nl.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbecdd7 main + 9591
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbecdd7 main + 9591
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23062==ERROR: AddressSanitizer: attempting double-free on 0x602000000210 in thread T0:
+    #0 0x111fc82c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10e9c4eb5 in free malloc_mock.c:82
+    #2 0x10e9cadfb in append_file_data get_next_line.c:48
+    #3 0x10e9cb3d7 in get_next_line get_next_line.c:91
+    #4 0x10e9ca630 in test_gnl_func file_utils.c:40
+    #5 0x10e9c34fb in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 15: get_next_line(5: "variable_nls.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbed709 main + 11945
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbed709 main + 11945
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x602000000210 is located 0 bytes inside of 11-byte region [0x602000000210,0x60200000021b)
+freed by thread T0 here:
+    #0 0x111fc82c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10e9c4eb5 in free malloc_mock.c:82
+    #2 0x10e9cae97 in gnl_read_loop get_next_line.c:25
+    #3 0x10e9cadee in append_file_data get_next_line.c:47
+    #4 0x10e9cb3d7 in get_next_line get_next_line.c:91
+    #5 0x10e9ca630 in test_gnl_func file_utils.c:40
+    #6 0x10e9c34fb in main tester.c:193
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 8: get_next_line(5: "lines_around_10.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbede2e main + 13774
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbede2e main + 13774
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x111fc817d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10e9c487c in malloc malloc_mock.c:65
+    #2 0x10e9cadb2 in append_file_data get_next_line.c:44
+    #3 0x10e9cb3d7 in get_next_line get_next_line.c:91
+    #4 0x10e9ca630 in test_gnl_func file_utils.c:40
+    #5 0x10e9c34fb in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 4: get_next_line(5: "giant_line.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbee47c main + 15388
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbee47c main + 15388
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 3: get_next_line(5: "read_error.txt"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line.c:49:10
+     in get_next_line get_next_line.c:91:15
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:193:2
 
-##==##==##&&##==##==##./test2.out
-Error in test 5: get_next_line(5: "giant_line_nl.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbeebf7 main + 17303
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbeebf7 main + 17303
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23078==ERROR: AddressSanitizer: attempting double-free on 0x000107401800 in thread T0:
+    #0 0x1037e12c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1001d6f15 in free malloc_mock.c:82
+    #2 0x1001dce5b in append_file_data get_next_line.c:48
+    #3 0x1001dd437 in get_next_line get_next_line.c:91
+    #4 0x1001dc690 in test_gnl_func file_utils.c:40
+    #5 0x1001d16b6 in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 10: get_next_line(5: "read_error.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbef507 main + 19623
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbef507 main + 19623
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x000107401800 is located 0 bytes inside of 1000001-byte region [0x000107401800,0x0001074f5a41)
+freed by thread T0 here:
+    #0 0x1037e12c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1001d6f15 in free malloc_mock.c:82
+    #2 0x1001dcef7 in gnl_read_loop get_next_line.c:25
+    #3 0x1001dce4e in append_file_data get_next_line.c:47
+    #4 0x1001dd437 in get_next_line get_next_line.c:91
+    #5 0x1001dc690 in test_gnl_func file_utils.c:40
+    #6 0x1001d16b6 in main tester.c:103
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-Error in test 4: get_next_line(5: "limits.txt"):
-malloc protection check for 1th malloc:
-0   test2.out                           0x000000010fbf09c5 _add_malloc + 757
-1   test2.out                           0x000000010fbf06c3 malloc + 307
-2   test2.out                           0x000000010fbf7883 ft_strdup + 35
-3   test2.out                           0x000000010fbf6db6 append_file_data + 38
-4   test2.out                           0x000000010fbf7378 get_next_line + 56
-5   test2.out                           0x000000010fbf6a92 null_check_gnl + 50
-6   test2.out                           0x000000010fbea6ea test_limit + 602
-7   test2.out                           0x000000010fbefac2 main + 21090
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test2.out                           0x000000010fbf31f3 show_signal_msg + 419
-1   test2.out                           0x000000010fbf3291 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test2.out                           0x000000010fbf6e05 append_file_data + 117
-5   test2.out                           0x000000010fbf7378 get_next_line + 56
-6   test2.out                           0x000000010fbf6c7e null_check_gnl + 542
-7   test2.out                           0x000000010fbea6ea test_limit + 602
-8   test2.out                           0x000000010fbefac2 main + 21090
-9   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x1037e117d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1001d68dc in malloc malloc_mock.c:65
+    #2 0x1001dce12 in append_file_data get_next_line.c:44
+    #3 0x1001dd437 in get_next_line get_next_line.c:91
+    #4 0x1001dc690 in test_gnl_func file_utils.c:40
+    #5 0x1001d16b6 in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test2.out
-##==##==##&&##==##==##./test2.out
-##==##==##&&##==##==##./test3.out
-##==##==##&&##==##==##./test3.out
-Error in test 4: get_next_line(5: "empty.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x000000010476dad3 main + 3155
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x000000010476dad3 main + 3155
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 2: get_next_line(100: "Invalid fd"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line.c:49:10
+     in get_next_line get_next_line.c:91:15
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:103:2
 
-##==##==##&&##==##==##./test3.out
-Error in test 4: get_next_line(5: "1char.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x000000010476e0cc main + 4684
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x000000010476e0cc main + 4684
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23093==ERROR: AddressSanitizer: attempting double-free on 0x0001077dd800 in thread T0:
+    #0 0x1037e12c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1001d6f15 in free malloc_mock.c:82
+    #2 0x1001dce5b in append_file_data get_next_line.c:48
+    #3 0x1001dd437 in get_next_line get_next_line.c:91
+    #4 0x1001d5afc in main tester.c:193
+    #5 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test3.out
-Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x000000010476e6c5 main + 6213
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x000000010476e6c5 main + 6213
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x0001077dd800 is located 0 bytes inside of 1000001-byte region [0x0001077dd800,0x0001078d1a41)
+freed by thread T0 here:
+    #0 0x1037e12c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1001d6f15 in free malloc_mock.c:82
+    #2 0x1001dcef7 in gnl_read_loop get_next_line.c:25
+    #3 0x1001dce4e in append_file_data get_next_line.c:47
+    #4 0x1001dd437 in get_next_line get_next_line.c:91
+    #5 0x1001d5afc in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test3.out
-Error in test 4: get_next_line(5: "only_nl.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x000000010476ecbe main + 7742
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x000000010476ecbe main + 7742
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x1037e117d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1001d68dc in malloc malloc_mock.c:65
+    #2 0x1001dce12 in append_file_data get_next_line.c:44
+    #3 0x1001dd437 in get_next_line get_next_line.c:91
+    #4 0x1001d5afc in main tester.c:193
+    #5 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test3.out
-Error in test 8: get_next_line(5: "multiple_nl.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x000000010476f3e3 main + 9571
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x000000010476f3e3 main + 9571
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 3: get_next_line(5: "read_error.txt"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line.c:49:10
+     in get_next_line get_next_line.c:91:15
+     in main tester.c:193:2
 
-##==##==##&&##==##==##./test3.out
-Error in test 15: get_next_line(5: "variable_nls.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x000000010476fd15 main + 11925
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x000000010476fd15 main + 11925
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23113==ERROR: AddressSanitizer: attempting double-free on 0x602000000130 in thread T0:
+    #0 0x10a8c72c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1072bce05 in free malloc_mock.c:82
+    #2 0x1072c2d3b in append_file_data get_next_line_bonus.c:48
+    #3 0x1072c336b in get_next_line get_next_line_bonus.c:91
+    #4 0x1072c2570 in test_gnl_func file_utils.c:40
+    #5 0x1072b839a in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test3.out
-Error in test 8: get_next_line(5: "lines_around_10.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x000000010477043a main + 13754
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x000000010477043a main + 13754
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x602000000130 is located 0 bytes inside of 2-byte region [0x602000000130,0x602000000132)
+freed by thread T0 here:
+    #0 0x10a8c72c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1072bce05 in free malloc_mock.c:82
+    #2 0x1072c2dd7 in read_until_newline get_next_line_bonus.c:25
+    #3 0x1072c2d2e in append_file_data get_next_line_bonus.c:47
+    #4 0x1072c336b in get_next_line get_next_line_bonus.c:91
+    #5 0x1072c2570 in test_gnl_func file_utils.c:40
+    #6 0x1072b839a in main tester.c:103
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test3.out
-Error in test 4: get_next_line(5: "giant_line.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x0000000104770a88 main + 15368
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x0000000104770a88 main + 15368
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x10a8c717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1072bc7cc in malloc malloc_mock.c:65
+    #2 0x1072c2cf2 in append_file_data get_next_line_bonus.c:44
+    #3 0x1072c336b in get_next_line get_next_line_bonus.c:91
+    #4 0x1072c2570 in test_gnl_func file_utils.c:40
+    #5 0x1072b839a in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test3.out
-Error in test 5: get_next_line(5: "giant_line_nl.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x0000000104771203 main + 17283
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x0000000104771203 main + 17283
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 2: get_next_line(100: "Invalid fd"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:103:2
 
-##==##==##&&##==##==##./test3.out
-Error in test 10: get_next_line(5: "read_error.txt"):
-malloc protection check for 1th malloc:
-0   test3.out                           0x0000000104772a25 _add_malloc + 757
-1   test3.out                           0x0000000104772723 malloc + 307
-2   test3.out                           0x00000001047798e3 ft_strdup + 35
-3   test3.out                           0x0000000104778e16 append_file_data + 38
-4   test3.out                           0x00000001047793d8 get_next_line + 56
-5   test3.out                           0x0000000104778af2 null_check_gnl + 50
-6   test3.out                           0x0000000104771aff main + 19583
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test3.out                           0x0000000104775253 show_signal_msg + 419
-1   test3.out                           0x00000001047752f1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test3.out                           0x0000000104778e65 append_file_data + 117
-5   test3.out                           0x00000001047793d8 get_next_line + 56
-6   test3.out                           0x0000000104778cde null_check_gnl + 542
-7   test3.out                           0x0000000104771aff main + 19583
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23126==ERROR: AddressSanitizer: attempting double-free on 0x6020000004b0 in thread T0:
+    #0 0x10a8c72c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1072bce05 in free malloc_mock.c:82
+    #2 0x1072c2d3b in append_file_data get_next_line_bonus.c:48
+    #3 0x1072c336b in get_next_line get_next_line_bonus.c:91
+    #4 0x1072c2570 in test_gnl_func file_utils.c:40
+    #5 0x1072bb9fb in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test3.out
-##==##==##&&##==##==##./test3.out
-##==##==##&&##==##==##./test4.out
-##==##==##&&##==##==##./test4.out
-Error in test 4: get_next_line(5: "empty.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x0000000100404877 main + 2871
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x0000000100404877 main + 2871
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x6020000004b0 is located 0 bytes inside of 2-byte region [0x6020000004b0,0x6020000004b2)
+freed by thread T0 here:
+    #0 0x10a8c72c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x1072bce05 in free malloc_mock.c:82
+    #2 0x1072c2dd7 in read_until_newline get_next_line_bonus.c:25
+    #3 0x1072c2d2e in append_file_data get_next_line_bonus.c:47
+    #4 0x1072c336b in get_next_line get_next_line_bonus.c:91
+    #5 0x1072c2570 in test_gnl_func file_utils.c:40
+    #6 0x1072bb9fb in main tester.c:193
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test4.out
-Error in test 4: get_next_line(5: "1char.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x0000000100404e70 main + 4400
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x0000000100404e70 main + 4400
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x10a8c717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1072bc7cc in malloc malloc_mock.c:65
+    #2 0x1072c2cf2 in append_file_data get_next_line_bonus.c:44
+    #3 0x1072c336b in get_next_line get_next_line_bonus.c:91
+    #4 0x1072c2570 in test_gnl_func file_utils.c:40
+    #5 0x1072bb9fb in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test4.out
-Error in test 4: get_next_line(5: "one_line_no_nl.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x0000000100405469 main + 5929
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x0000000100405469 main + 5929
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 3: get_next_line(5: "read_error.txt"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:193:2
 
-##==##==##&&##==##==##./test4.out
-Error in test 4: get_next_line(5: "only_nl.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x0000000100405a62 main + 7458
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x0000000100405a62 main + 7458
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23144==ERROR: AddressSanitizer: attempting double-free on 0x602000000130 in thread T0:
+    #0 0x105c372c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x102632c55 in free malloc_mock.c:82
+    #2 0x102638b9b in append_file_data get_next_line_bonus.c:48
+    #3 0x1026391cb in get_next_line get_next_line_bonus.c:91
+    #4 0x1026383d0 in test_gnl_func file_utils.c:40
+    #5 0x10262ce4a in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test4.out
-Error in test 8: get_next_line(5: "multiple_nl.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x0000000100406187 main + 9287
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x0000000100406187 main + 9287
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+0x602000000130 is located 0 bytes inside of 11-byte region [0x602000000130,0x60200000013b)
+freed by thread T0 here:
+    #0 0x105c372c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x102632c55 in free malloc_mock.c:82
+    #2 0x102638c37 in read_until_newline get_next_line_bonus.c:25
+    #3 0x102638b8e in append_file_data get_next_line_bonus.c:47
+    #4 0x1026391cb in get_next_line get_next_line_bonus.c:91
+    #5 0x1026383d0 in test_gnl_func file_utils.c:40
+    #6 0x10262ce4a in main tester.c:103
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test4.out
-Error in test 15: get_next_line(5: "variable_nls.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x0000000100406ab9 main + 11641
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x0000000100406ab9 main + 11641
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+previously allocated by thread T0 here:
+    #0 0x105c3717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10263261c in malloc malloc_mock.c:65
+    #2 0x102638b52 in append_file_data get_next_line_bonus.c:44
+    #3 0x1026391cb in get_next_line get_next_line_bonus.c:91
+    #4 0x1026383d0 in test_gnl_func file_utils.c:40
+    #5 0x10262ce4a in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test4.out
-Error in test 8: get_next_line(5: "lines_around_10.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x00000001004071de main + 13470
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x00000001004071de main + 13470
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 2: get_next_line(100: "Invalid fd"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:103:2
 
-##==##==##&&##==##==##./test4.out
-Error in test 10: get_next_line(5: "read_error.txt"):
-malloc protection check for 1th malloc:
-0   test4.out                           0x00000001004089d5 _add_malloc + 757
-1   test4.out                           0x00000001004086d3 malloc + 307
-2   test4.out                           0x000000010040fa23 ft_strdup + 35
-3   test4.out                           0x000000010040edb6 append_file_data + 38
-4   test4.out                           0x000000010040f3c9 get_next_line + 137
-5   test4.out                           0x000000010040ea92 null_check_gnl + 50
-6   test4.out                           0x0000000100407a7f main + 15679
-7   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
-: Segmentation fault!
-0   test4.out                           0x000000010040b203 show_signal_msg + 419
-1   test4.out                           0x000000010040b2a1 sigsegv + 33
-2   libsystem_platform.dylib            0x00007fff6af6a5fd _sigtramp + 29
-3   ???                                 0x0000000000000000 0x0 + 0
-4   test4.out                           0x000000010040ee05 append_file_data + 117
-5   test4.out                           0x000000010040f3c9 get_next_line + 137
-6   test4.out                           0x000000010040ec7e null_check_gnl + 542
-7   test4.out                           0x0000000100407a7f main + 15679
-8   libdyld.dylib                       0x00007fff6ad71cc9 start + 1
+=================================================================
+==23159==ERROR: AddressSanitizer: attempting double-free on 0x602000000210 in thread T0:
+    #0 0x105c372c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x102632c55 in free malloc_mock.c:82
+    #2 0x102638b9b in append_file_data get_next_line_bonus.c:48
+    #3 0x1026391cb in get_next_line get_next_line_bonus.c:91
+    #4 0x1026383d0 in test_gnl_func file_utils.c:40
+    #5 0x10263129b in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
-##==##==##&&##==##==##./test4.out
-##==##==##&&##==##==##./test4.out
+0x602000000210 is located 0 bytes inside of 11-byte region [0x602000000210,0x60200000021b)
+freed by thread T0 here:
+    #0 0x105c372c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x102632c55 in free malloc_mock.c:82
+    #2 0x102638c37 in read_until_newline get_next_line_bonus.c:25
+    #3 0x102638b8e in append_file_data get_next_line_bonus.c:47
+    #4 0x1026391cb in get_next_line get_next_line_bonus.c:91
+    #5 0x1026383d0 in test_gnl_func file_utils.c:40
+    #6 0x10263129b in main tester.c:193
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+previously allocated by thread T0 here:
+    #0 0x105c3717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10263261c in malloc malloc_mock.c:65
+    #2 0x102638b52 in append_file_data get_next_line_bonus.c:44
+    #3 0x1026391cb in get_next_line get_next_line_bonus.c:91
+    #4 0x1026383d0 in test_gnl_func file_utils.c:40
+    #5 0x10263129b in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 3: get_next_line(5: "read_error.txt"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:193:2
+
+=================================================================
+==23181==ERROR: AddressSanitizer: attempting double-free on 0x000115d01800 in thread T0:
+    #0 0x1120ee2c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10eae7cb5 in free malloc_mock.c:82
+    #2 0x10eaedbfb in append_file_data get_next_line_bonus.c:48
+    #3 0x10eaee22b in get_next_line get_next_line_bonus.c:91
+    #4 0x10eaed430 in test_gnl_func file_utils.c:40
+    #5 0x10eae2456 in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+0x000115d01800 is located 0 bytes inside of 1000001-byte region [0x000115d01800,0x000115df5a41)
+freed by thread T0 here:
+    #0 0x1120ee2c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10eae7cb5 in free malloc_mock.c:82
+    #2 0x10eaedc97 in read_until_newline get_next_line_bonus.c:25
+    #3 0x10eaedbee in append_file_data get_next_line_bonus.c:47
+    #4 0x10eaee22b in get_next_line get_next_line_bonus.c:91
+    #5 0x10eaed430 in test_gnl_func file_utils.c:40
+    #6 0x10eae2456 in main tester.c:103
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+previously allocated by thread T0 here:
+    #0 0x1120ee17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10eae767c in malloc malloc_mock.c:65
+    #2 0x10eaedbb2 in append_file_data get_next_line_bonus.c:44
+    #3 0x10eaee22b in get_next_line get_next_line_bonus.c:91
+    #4 0x10eaed430 in test_gnl_func file_utils.c:40
+    #5 0x10eae2456 in main tester.c:103
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 2: get_next_line(100: "Invalid fd"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in test_gnl_func file_utils.c:40:8
+     in main tester.c:103:2
+
+=================================================================
+==23198==ERROR: AddressSanitizer: attempting double-free on 0x0001160dd800 in thread T0:
+    #0 0x1120ee2c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10eae7cb5 in free malloc_mock.c:82
+    #2 0x10eaedbfb in append_file_data get_next_line_bonus.c:48
+    #3 0x10eaee22b in get_next_line get_next_line_bonus.c:91
+    #4 0x10eae689c in main tester.c:193
+    #5 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+0x0001160dd800 is located 0 bytes inside of 1000001-byte region [0x0001160dd800,0x0001161d1a41)
+freed by thread T0 here:
+    #0 0x1120ee2c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10eae7cb5 in free malloc_mock.c:82
+    #2 0x10eaedc97 in read_until_newline get_next_line_bonus.c:25
+    #3 0x10eaedbee in append_file_data get_next_line_bonus.c:47
+    #4 0x10eaee22b in get_next_line get_next_line_bonus.c:91
+    #5 0x10eae689c in main tester.c:193
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+previously allocated by thread T0 here:
+    #0 0x1120ee17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10eae767c in malloc malloc_mock.c:65
+    #2 0x10eaedbb2 in append_file_data get_next_line_bonus.c:44
+    #3 0x10eaee22b in get_next_line get_next_line_bonus.c:91
+    #4 0x10eae689c in main tester.c:193
+    #5 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 3: get_next_line(5: "read_error.txt"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in main tester.c:193:2
+
+=================================================================
+==23214==ERROR: AddressSanitizer: attempting double-free on 0x602000000830 in thread T0:
+    #0 0x1061a02c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10210d845 in free malloc_mock.c:82
+    #2 0x10211377b in append_file_data get_next_line_bonus.c:48
+    #3 0x102113dab in get_next_line get_next_line_bonus.c:91
+    #4 0x102112fb0 in test_gnl_func file_utils.c:40
+    #5 0x10210b51f in main bonus.c:40
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+0x602000000830 is located 0 bytes inside of 2-byte region [0x602000000830,0x602000000832)
+freed by thread T0 here:
+    #0 0x1061a02c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x10210d845 in free malloc_mock.c:82
+    #2 0x102113817 in read_until_newline get_next_line_bonus.c:25
+    #3 0x10211376e in append_file_data get_next_line_bonus.c:47
+    #4 0x102113dab in get_next_line get_next_line_bonus.c:91
+    #5 0x102112fb0 in test_gnl_func file_utils.c:40
+    #6 0x10210b51f in main bonus.c:40
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+previously allocated by thread T0 here:
+    #0 0x1061a017d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10210d20c in malloc malloc_mock.c:65
+    #2 0x102113732 in append_file_data get_next_line_bonus.c:44
+    #3 0x102113dab in get_next_line get_next_line_bonus.c:91
+    #4 0x102112fb0 in test_gnl_func file_utils.c:40
+    #5 0x10210b51f in main bonus.c:40
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 5: get_next_line(5: "open, error, open"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in test_gnl_func file_utils.c:40:8
+     in main bonus.c:40:2
+
+=================================================================
+==23242==ERROR: AddressSanitizer: attempting double-free on 0x602000000310 in thread T0:
+    #0 0x10559d2c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x101f9a835 in free malloc_mock.c:82
+    #2 0x101fa077b in append_file_data get_next_line_bonus.c:48
+    #3 0x101fa0dab in get_next_line get_next_line_bonus.c:91
+    #4 0x101f9ffb0 in test_gnl_func file_utils.c:40
+    #5 0x101f9850f in main bonus.c:40
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+0x602000000310 is located 0 bytes inside of 11-byte region [0x602000000310,0x60200000031b)
+freed by thread T0 here:
+    #0 0x10559d2c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x101f9a835 in free malloc_mock.c:82
+    #2 0x101fa0817 in read_until_newline get_next_line_bonus.c:25
+    #3 0x101fa076e in append_file_data get_next_line_bonus.c:47
+    #4 0x101fa0dab in get_next_line get_next_line_bonus.c:91
+    #5 0x101f9ffb0 in test_gnl_func file_utils.c:40
+    #6 0x101f9850f in main bonus.c:40
+    #7 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+previously allocated by thread T0 here:
+    #0 0x10559d17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x101f9a1fc in malloc malloc_mock.c:65
+    #2 0x101fa0732 in append_file_data get_next_line_bonus.c:44
+    #3 0x101fa0dab in get_next_line get_next_line_bonus.c:91
+    #4 0x101f9ffb0 in test_gnl_func file_utils.c:40
+    #5 0x101f9850f in main bonus.c:40
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 5: get_next_line(5: "open, error, open"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in test_gnl_func file_utils.c:40:8
+     in main bonus.c:40:2
+
+=================================================================
+==23259==ERROR: AddressSanitizer: attempting double-free on 0x0001091d4800 in thread T0:
+    #0 0x104e152c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x101811835 in free malloc_mock.c:82
+    #2 0x10181777b in append_file_data get_next_line_bonus.c:48
+    #3 0x101817dab in get_next_line get_next_line_bonus.c:91
+    #4 0x10180f4d4 in main bonus.c:40
+    #5 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+0x0001091d4800 is located 0 bytes inside of 1000001-byte region [0x0001091d4800,0x0001092c8a41)
+freed by thread T0 here:
+    #0 0x104e152c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
+    #1 0x101811835 in free malloc_mock.c:82
+    #2 0x101817817 in read_until_newline get_next_line_bonus.c:25
+    #3 0x10181776e in append_file_data get_next_line_bonus.c:47
+    #4 0x101817dab in get_next_line get_next_line_bonus.c:91
+    #5 0x10180f4d4 in main bonus.c:40
+    #6 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+previously allocated by thread T0 here:
+    #0 0x104e1517d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1018111fc in malloc malloc_mock.c:65
+    #2 0x101817732 in append_file_data get_next_line_bonus.c:44
+    #3 0x101817dab in get_next_line get_next_line_bonus.c:91
+    #4 0x10180f4d4 in main bonus.c:40
+    #5 0x7fff70772cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: double-free (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6) in wrap_free+0xa6
+You are trying to free a pointer that was already freed
+Error in test 5: get_next_line(6: "open, error, open"): Memory problems!
+     in sigabort utils.c:58:1
+     in free malloc_mock.c:83:1
+  -> in append_file_data get_next_line_bonus.c:49:10
+     in get_next_line get_next_line_bonus.c:91:2
+     in main bonus.c:40:2
+

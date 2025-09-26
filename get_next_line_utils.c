@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 09:13:20 by yyudi             #+#    #+#             */
-/*   Updated: 2025/09/26 14:07:59 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/09/26 18:03:28 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*ft_strdup(const char *source_str)
 	size_t	i;
 
 	if (!source_str)
-		return (NULL);
+		return (ft_strdup(""));
 	copy = (char *)malloc(ft_strlen(source_str) + 1);
 	if (!copy)
 		return (NULL);
