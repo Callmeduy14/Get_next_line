@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 09:08:59 by yyudi             #+#    #+#             */
-/*   Updated: 2025/09/26 19:25:29 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/09/26 20:05:35 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ char	*remove_returned_line(char *saved_buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*saved_buffers[MAX_FD];
+	static char	*saved_buffers[1024];
 	char		*next_line;
 
-	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	saved_buffers[fd] = append_file_data(fd, saved_buffers[fd]);
 	if (!saved_buffers[fd])

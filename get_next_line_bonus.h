@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 09:10:46 by yyudi             #+#    #+#             */
-/*   Updated: 2025/09/26 14:07:28 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/09/26 20:04:00 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
-# endif
-
-# ifndef MAX_FD
-#  if defined(OPEN_MAX)
-#   define MAX_FD OPEN_MAX
-#  else
-#   define MAX_FD 1024
-#  endif
 # endif
 
 # include <stdlib.h>
