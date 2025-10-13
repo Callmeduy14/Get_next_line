@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 09:07:50 by yyudi             #+#    #+#             */
-/*   Updated: 2025/09/27 13:04:59 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/10/13 17:59:30 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@ static int	read_and_join(int fd, char **saved_buffer, char *read_buffer)
 {
 	int		bytes_read;
 	char	*joined_content;
-	char	*tmp;
 
 	bytes_read = read(fd, read_buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
 		return (-1);
 	read_buffer[bytes_read] = '\0';
-	tmp = *saved_buffer;
 	joined_content = ft_strjoin(*saved_buffer, read_buffer);
+	free(*saved_buffer);
 	if (!joined_content)
 		return (-2);
-	free(tmp);
 	*saved_buffer = joined_content;
 	return (bytes_read);
 }
@@ -37,11 +35,9 @@ char	*append_file_data(int fd, char *saved_buffer)
 	int		bytes_read;
 
 	if (!saved_buffer)
-	{
 		saved_buffer = ft_strdup("");
-		if (!saved_buffer)
-			return (NULL);
-	}
+	if (!saved_buffer)
+		return (NULL);
 	read_buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!read_buffer)
 		return (free(saved_buffer), NULL);
@@ -57,7 +53,8 @@ char	*append_file_data(int fd, char *saved_buffer)
 			return (NULL);
 		}
 	}
-	return (free(read_buffer),saved_buffer);
+	free(read_buffer);
+	return (saved_buffer);
 }
 
 char	*extract_current_line(char *saved_buffer)
@@ -86,6 +83,8 @@ char	*remove_returned_line(char *saved_buffer)
 		index++;
 	if (!saved_buffer[index])
 		return (free(saved_buffer), NULL);
+	if (saved_buffer[index + 1] == '\0')
+		return (free(saved_buffer), NULL);
 	remaining_content = ft_substr(saved_buffer,
 			index + 1, ft_strlen(saved_buffer) - index - 1);
 	free(saved_buffer);
@@ -98,14 +97,7 @@ char	*get_next_line(int fd)
 	char		*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		if (saved_buffer)
-		{
-			free(saved_buffer);
-			saved_buffer = NULL;
-		}
 		return (NULL);
-	}
 	saved_buffer = append_file_data(fd, saved_buffer);
 	if (!saved_buffer)
 		return (NULL);
@@ -122,29 +114,4 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	return (next_line);
-}
-
-#include <stdio.h>
-#include <fcntl.h>
-int	main(int argc, char **argv)
-{
-	int		fd;
-	char	*line;
-
-	fd = 0;
-	if (argc > 1)
-		fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		return (1);
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		write(1, line, ft_strlen(line));
-		free(line);
-	}
-	if (fd > 2)
-		close(fd);
-	return (0);
 }
